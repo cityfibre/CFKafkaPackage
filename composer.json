@@ -1,0 +1,38 @@
+{
+    "name": "cityfibre/cfkafkapackage",
+    "description": "Laravel Package for Kafka consuming",
+    "type": "library",
+    "authors": [
+        {
+            "name": "willfCF"
+        }
+    ],
+    "require": {
+        "illuminate/console":  "^11.40",
+        "illuminate/contracts": "^11.40",
+        "laravel-zero/foundation":  "^11.44",
+        "illuminate/validation": "^11.40",
+        "illuminate/queue":  "^11.40",
+        "ext-rdkafka": "^6.0",
+        "mateusjunges/laravel-kafka": "^2.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5",
+        "mockery/mockery": "^1.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "cityfibre\\cfkafkapackage\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}

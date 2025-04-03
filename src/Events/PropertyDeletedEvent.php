@@ -36,6 +36,7 @@ class PropertyDeletedEvent extends BaseEvent
      */
     public function getData(array $message): array
     {
+        die(var_dump($message));
         Validator::make($message, ['event'=>'required|string'])->validate();
         return $message['event'];
     }

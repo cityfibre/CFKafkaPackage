@@ -3,7 +3,13 @@
 namespace cityfibre\cfkafkapackage\Events;
 
 
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
+
 abstract class BaseEvent {
+    public mixed $message;
+
+    public string $type = 'createUpdate';
 
     protected array $rules = [];
     const SFID_VALIDATION = 'required|string|max:18';
@@ -20,6 +26,16 @@ abstract class BaseEvent {
     public function __construct()
     {
         //
+    }
+
+    /**
+     * @throws ValidationException
+     */
+    public function getDataAndValidate(string $data): array
+    {
+        $dataArray = json_decode($data, true);
+        Validator::make($dataArray, $this->rules)->validate();
+        return $dataArray;
     }
 }
 

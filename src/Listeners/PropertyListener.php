@@ -15,10 +15,11 @@ class PropertyListener extends BaseListener
 
     public function handle($event): void
     {
-        $this->log->debug("PropertyListener::handle event: " . json_encode($event->decodedData));
+        $this->log->debug("PropertyListener::handle event: " . json_encode($event->data));
+        $this->log->debug("PropertyListener::handle event type: " . $event->type);
         $service = $this->getService();
         $methodName = $this->getCreateUpdateMethod();
-        $service->$methodName($event->decodedData);
+        $service->$methodName($event->data);
     }
 
 }

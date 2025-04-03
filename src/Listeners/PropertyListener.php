@@ -9,6 +9,7 @@ class PropertyListener extends BaseListener
 {
     public function __construct(LoggerInterface $log) {
         $this->log = $log;
+        $this->log->debug("PropertyListener __construct kafkaPackage.property.messageMap", config('kafkaPackage.property.messageMap', []));
         $this->kafkaMessage = new PropertyMessage( config('kafkaPackage.property.messageMap') );
     }
 

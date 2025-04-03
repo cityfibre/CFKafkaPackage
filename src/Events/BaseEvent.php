@@ -4,6 +4,8 @@ namespace cityfibre\cfkafkapackage\Events;
 
 
 abstract class BaseEvent {
+
+    protected array $rules = [];
     const SFID_VALIDATION = 'required|string|max:18';
     const STRING_VALIDATION = 'required|string|max:255';
     const BOOLEAN_VALIDATION = 'required|boolean';

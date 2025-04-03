@@ -19,6 +19,10 @@ abstract class BaseListener implements ShouldQueue
     protected $ignoreClasses;
 
     public $queue = 'default';
+    /**
+     * @var \Illuminate\Config\Repository|\Illuminate\Foundation\Application|mixed|object|null
+     */
+    protected array $topicConfig;
 
     public function handle($event)
     {
@@ -96,5 +100,35 @@ abstract class BaseListener implements ShouldQueue
         }
 
         return true;
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function getTopicConfig(string $topicName): void
+    {
+        $topicConfig = config('kafka.topic_mapping.'.$topicName);
+        if ($topicConfig[$topicName] === null) {
+            throw new Exception('Topic Config Error: No Topic Config Found For topic: '.$topicName);
+        }
+        $this->topicConfig = $topicConfig;
+    }
+
+    public function getService()
+    {
+        $serviceClass = $this->topicConfig['service'];
+        if (class_exists($serviceClass) === false) {
+            throw new Exception('Service Class Not Found: '.$serviceClass);
+        }
+        return app($serviceClass);
+    }
+
+    public function getCreateUpdateMethod()
+    {
+        $methodName = $this->topicConfig['createUpdateMethodName'];
+        if (method_exists($this->topicConfig['service'], $methodName) === false) {
+            throw new Exception('Create Update Method '.$methodName.' Not Found on Class '.$this->topicConfig['service']);
+        }
+        return $methodName;
     }
 }

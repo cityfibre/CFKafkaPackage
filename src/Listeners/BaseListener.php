@@ -108,7 +108,7 @@ abstract class BaseListener implements ShouldQueue
     public function getTopicConfig(string $topicName): void
     {
         $topicConfig = config('kafka.topic_mapping.'.$topicName);
-        if ($topicConfig[$topicName] === null) {
+        if ($topicConfig === null) {
             throw new Exception('Topic Config Error: No Topic Config Found For topic: '.$topicName);
         }
         $this->topicConfig = $topicConfig;

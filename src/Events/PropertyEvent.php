@@ -18,8 +18,8 @@ class PropertyEvent extends BaseEvent
     {
         parent::__construct();
         $this->setRules();
-        $dataString = $this->getData($message);
-        $this->data = $this->getDataAndValidate($dataString);
+        $data = $this->getData($message);
+        $this->data = $this->validateData($data);
     }
 
     public function setRules(): void
@@ -56,10 +56,10 @@ class PropertyEvent extends BaseEvent
     /**
      * @throws ValidationException
      */
-    public function getData(array $message): string
+    public function getData(array $message): array
     {
         Validator::make($message, ['data.data'=>'required|string'])->validate();
-        return $message['data']['data'];
+        return json_decode($message['data']['data'], true);
     }
 
 }

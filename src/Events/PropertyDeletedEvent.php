@@ -18,8 +18,8 @@ class PropertyDeletedEvent extends BaseEvent
     {
         parent::__construct();
         $this->setRules();
-        $dataString = $this->getData($message);
-        $this->data = $this->getDataAndValidate($dataString);
+        $data = $this->getData($message);
+        $this->data = $this->validateData($data);
     }
 
     public function setRules(): void
@@ -36,8 +36,7 @@ class PropertyDeletedEvent extends BaseEvent
      */
     public function getData(array $message): array
     {
-        die(var_dump($message));
-        Validator::make($message, ['event'=>'required|string'])->validate();
+        Validator::make($message, ['event'=>'required|array'])->validate();
         return $message['event'];
     }
 

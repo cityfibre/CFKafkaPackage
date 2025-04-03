@@ -31,11 +31,10 @@ abstract class BaseEvent {
     /**
      * @throws ValidationException
      */
-    public function getDataAndValidate(string $data): array
+    public function validateData(array $data): array
     {
-        $dataArray = json_decode($data, true);
-        Validator::make($dataArray, $this->rules)->validate();
-        return $dataArray;
+        Validator::make($data, $this->rules)->validate();
+        return $data;
     }
 }
 

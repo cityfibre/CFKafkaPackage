@@ -3,6 +3,7 @@
 namespace cityfibre\cfkafkapackage;
 
 
+use cityfibre\cfkafkapackage\Console\Commands\PropertyDeletedSubscriber;
 use cityfibre\cfkafkapackage\Console\Commands\PropertySubscriber;
 use Exception;
 use Illuminate\Support\Facades\Log;
@@ -28,6 +29,7 @@ class CFKafkaPackageServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 PropertySubscriber::class,
+                PropertyDeletedSubscriber::class
             ]);
         }
 

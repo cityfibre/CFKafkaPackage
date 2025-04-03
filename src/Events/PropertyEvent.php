@@ -11,7 +11,7 @@ class PropertyEvent extends BaseEvent
     use Dispatchable;
 
     public mixed $message;
-    private array $decodedData;
+    protected array $decodedData;
 
     public function __construct(array $message)
     {

@@ -17,7 +17,15 @@ class PropertyListener extends BaseListener
     {
         $this->log->debug("PropertyListener::handle event: " . json_encode($event->data));
         $this->log->debug("PropertyListener::handle event type: " . $event->type);
+
         $service = $this->getService();
+
+        if ($event->type == 'delete') {
+            $deletedMethodName = $this->getDeleteMethod();
+            $service->$deletedMethodName($event->data);
+            return;
+        }
+
         $methodName = $this->getCreateUpdateMethod();
         $service->$methodName($event->data);
     }

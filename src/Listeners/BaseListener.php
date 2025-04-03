@@ -131,4 +131,13 @@ abstract class BaseListener implements ShouldQueue
         }
         return $methodName;
     }
+
+    public function getDeleteMethod()
+    {
+        $methodName = $this->topicConfig['deleteMethodName'];
+        if (method_exists($this->topicConfig['service'], $methodName) === false) {
+            throw new Exception('Delete Method '.$methodName.' Not Found on Class '.$this->topicConfig['service']);
+        }
+        return $methodName;
+    }
 }

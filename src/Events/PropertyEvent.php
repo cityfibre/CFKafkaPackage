@@ -17,7 +17,8 @@ class PropertyEvent extends BaseEvent
 
     public function __construct($message)
     {
-        $this->message = $message;
+        var_dump($message);
+        $this->decodedData = json_decode($this->data['data']['data'], true);
     }
 
 }

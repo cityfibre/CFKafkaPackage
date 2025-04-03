@@ -17,7 +17,7 @@ class PropertyListener extends BaseListener
 
     public function handle($event): void
     {
-        $this->log->debug("[PropertyListener] $event");
+        $this->log->debug("[PropertyListener] $event->message");
     }
 
 }

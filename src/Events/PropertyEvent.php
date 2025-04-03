@@ -44,7 +44,11 @@ class PropertyEvent extends BaseEvent
             'Zip_Postal_Code__c' => $this::NULLABLE_STRING_VALIDATION,
             'Network_Readiness_Required__c' => $this::NULLABLE_BOOLEAN_VALIDATION,
             'Exclusivity_End_Date__c' => $this::NULLABLE_STRING_VALIDATION,
-            'Demand_Point_Type__c' => $this::NULLABLE_STRING_VALIDATION
+            'Demand_Point_Type__c' => $this::NULLABLE_STRING_VALIDATION,
+            'Drop_Architecture_Type__c' => $this::NULLABLE_STRING_VALIDATION,
+            'Property_Cherry_Picker__c' => $this::BOOLEAN_VALIDATION,
+            'Is_MDU__c' => $this::BOOLEAN_VALIDATION,
+            'Installation_Type__c' => $this::NULLABLE_STRING_VALIDATION,
         ];
     }
 

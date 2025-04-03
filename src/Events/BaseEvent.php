@@ -15,7 +15,10 @@ abstract class BaseEvent {
     const NULLABLE_BOOLEAN_VALIDATION = 'boolean|nullable';
     const NUMERIC_VALIDATION = 'required|numeric';
 
-
+    public function __construct()
+    {
+        //
+    }
 }
 
 

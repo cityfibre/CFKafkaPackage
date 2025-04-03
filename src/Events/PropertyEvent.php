@@ -11,16 +11,14 @@ class PropertyEvent extends BaseEvent
     use Dispatchable;
 
     public mixed $message;
-    private mixed $data;
-    private mixed $decodedData;
+    private array $decodedData;
 
     public function __construct(array $message)
     {
         parent::__construct();
         $this->setRules();
-        var_dump($message);
-        $data = $this->getData($message);
-        $this->decodedData = $this->decodeAndValidateData($data);
+        $dataString = $this->getData($message);
+        $this->decodedData = $this->decodeAndValidateData($dataString);
     }
 
     public function setRules(): void
@@ -53,7 +51,7 @@ class PropertyEvent extends BaseEvent
     /**
      * @throws ValidationException
      */
-    public function getData(array $message): array
+    public function getData(array $message): string
     {
         Validator::make($message, ['data.data'=>'required|string'])->validate();
         return $message['data']['data'];

@@ -4,9 +4,10 @@ namespace cityfibre\cfkafkapackage\Events;
 
 use Illuminate\Foundation\Events\Dispatchable;
 
-class AccountDeletedEvent extends BaseEvent
+class OntDeletedEvent extends BaseEvent
 {
     use Dispatchable;
+
 
     public string $type = 'delete'; // Setting Delete as default is createUpdate
 
@@ -23,7 +24,7 @@ class AccountDeletedEvent extends BaseEvent
     public function setRules(): void
     {
         $this->rules = [
-            'sf_id' => $this::SFID_VALIDATION
+            'Id' => $this::SFID_VALIDATION
         ];
     }
 

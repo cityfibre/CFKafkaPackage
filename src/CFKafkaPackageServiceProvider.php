@@ -12,6 +12,7 @@ use cityfibre\cfkafkapackage\Console\Commands\GeographicAddressSubscriber;
 use cityfibre\cfkafkapackage\Console\Commands\OntDeletedSubscriber;
 use cityfibre\cfkafkapackage\Console\Commands\OntSubscriber;
 use cityfibre\cfkafkapackage\Console\Commands\ProductDeletedSubscriber;
+use cityfibre\cfkafkapackage\Console\Commands\ProductSpecificationSubscriber;
 use cityfibre\cfkafkapackage\Console\Commands\ProductSubscriber;
 use cityfibre\cfkafkapackage\Console\Commands\ProjectDeletedSubscriber;
 use cityfibre\cfkafkapackage\Console\Commands\ProjectSubscriber;
@@ -54,6 +55,7 @@ class CFKafkaPackageServiceProvider extends ServiceProvider
                 ProjectSubscriber::class,
                 ProjectDeletedSubscriber::class,
                 GeographicAddressSubscriber::class,
+                ProductSpecificationSubscriber::class
             ]);
         }
 

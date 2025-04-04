@@ -5,6 +5,8 @@ namespace cityfibre\cfkafkapackage;
 
 use cityfibre\cfkafkapackage\Console\Commands\AccountDeletedSubscriber;
 use cityfibre\cfkafkapackage\Console\Commands\AccountSubscriber;
+use cityfibre\cfkafkapackage\Console\Commands\AppointmentCancelledSubscriber;
+use cityfibre\cfkafkapackage\Console\Commands\AppointmentConfirmedSubscriber;
 use cityfibre\cfkafkapackage\Console\Commands\AuthSubscriber;
 use cityfibre\cfkafkapackage\Console\Commands\CityDeletedSubscriber;
 use cityfibre\cfkafkapackage\Console\Commands\CitySubscriber;
@@ -55,7 +57,9 @@ class CFKafkaPackageServiceProvider extends ServiceProvider
                 ProjectSubscriber::class,
                 ProjectDeletedSubscriber::class,
                 GeographicAddressSubscriber::class,
-                ProductSpecificationSubscriber::class
+                ProductSpecificationSubscriber::class,
+                AppointmentCancelledSubscriber::class,
+                AppointmentConfirmedSubscriber::class
             ]);
         }
 

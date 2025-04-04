@@ -37,7 +37,7 @@ class OntDeletedEvent extends BaseEvent
     public function getData(array $message): array
     {
         Validator::make($message, ['event'=>'required|array'])->validate();
-        return json_decode($message['event'], true);
+        return $message['event'];
     }
 
 }

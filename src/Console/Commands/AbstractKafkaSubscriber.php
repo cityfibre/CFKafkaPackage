@@ -53,8 +53,6 @@ abstract class AbstractKafkaSubscriber extends Command
             ->withConsumerGroupId(config('kafka.consumer_group_id'))
             ->subscribe($this->topic)
             ->withHandler(function (ConsumerMessage $message) {
-                $preview = substr(json_encode($message->getBody()),0, 64) ?? 'No Preview Available';
-
                 if ($this->option('debug')) {
                     $this->info(json_encode($message->getBody()));
                 }

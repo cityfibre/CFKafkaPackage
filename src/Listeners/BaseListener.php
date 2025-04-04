@@ -104,19 +104,24 @@ abstract class BaseListener implements ShouldQueue
 
     public function handle($event): void
     {
-        $this->log->debug("PropertyListener::handle event: " . json_encode($event->data));
-        $this->log->debug("PropertyListener::handle event type: " . $event->type);
+        try {
+            $this->log->debug("Listener::handle event: " . json_encode($event->data));
+            $this->log->debug("Listener::handle event type: " . $event->type);
 
-        $service = $this->getService();
+            $service = $this->getService();
 
-        if ($event->type == 'delete') {
-            $deletedMethodName = $this->getDeleteMethod();
-            $service->$deletedMethodName($event->data);
-            return;
+            if ($event->type == 'delete') {
+                $deletedMethodName = $this->getDeleteMethod();
+                $service->$deletedMethodName($event->data);
+                return;
+            }
+
+            $methodName = $this->getCreateUpdateMethod();
+            $service->$methodName($event->data);
+        } catch (Exception $e) {
+            $this->log->error("Listener::handle event failed to updateCreate");
+            $this->log->error($e->getMessage());
         }
-
-        $methodName = $this->getCreateUpdateMethod();
-        $service->$methodName($event->data);
     }
 
     /**

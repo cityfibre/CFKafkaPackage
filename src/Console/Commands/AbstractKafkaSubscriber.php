@@ -80,7 +80,7 @@ abstract class AbstractKafkaSubscriber extends Command
 //                $this->log->notice("Stopped Consuming: topic: $this->topic");
 //            })
             ->onStopConsuming( function () {
-                $this->log->debug('stopping consuming...');
+                $this->info('stopping consuming...');
             })
             ->build()
             ->consume()

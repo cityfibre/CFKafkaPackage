@@ -10,6 +10,8 @@ use cityfibre\cfkafkapackage\Console\Commands\CityDeletedSubscriber;
 use cityfibre\cfkafkapackage\Console\Commands\CitySubscriber;
 use cityfibre\cfkafkapackage\Console\Commands\OntDeletedSubscriber;
 use cityfibre\cfkafkapackage\Console\Commands\OntSubscriber;
+use cityfibre\cfkafkapackage\Console\Commands\ProductDeletedSubscriber;
+use cityfibre\cfkafkapackage\Console\Commands\ProductSubscriber;
 use cityfibre\cfkafkapackage\Console\Commands\PropertyDeletedSubscriber;
 use cityfibre\cfkafkapackage\Console\Commands\PropertySubscriber;
 use Exception;
@@ -44,6 +46,8 @@ class CFKafkaPackageServiceProvider extends ServiceProvider
                 AccountDeletedSubscriber::class,
                 OntSubscriber::class,
                 OntDeletedSubscriber::class,
+                ProductSubscriber::class,
+                ProductDeletedSubscriber::class,
             ]);
         }
 

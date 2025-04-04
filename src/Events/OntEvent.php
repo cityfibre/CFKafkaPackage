@@ -24,7 +24,11 @@ class OntEvent extends BaseEvent
         $this->rules = [
             'sfid' => $this::SFID_VALIDATION,
             'property__c' => $this::STRING_VALIDATION,
-            'ont_type__c' => $this::NULLABLE_STRING_VALIDATION
+            'fsan__c' => $this::NULLABLE_STRING_VALIDATION,
+            'serial_number__c' => $this::NULLABLE_STRING_VALIDATION,
+            'olt__c' => $this::NULLABLE_STRING_VALIDATION,
+            'ont_type__c' => $this::STRING_VALIDATION,
+            'olt_port__c' => $this::NULLABLE_STRING_VALIDATION,
         ];
     }
 

@@ -3,6 +3,8 @@
 namespace cityfibre\cfkafkapackage\Events;
 
 use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class ProductDeletedEvent extends BaseEvent
 {
@@ -18,7 +20,8 @@ class ProductDeletedEvent extends BaseEvent
     {
         parent::__construct();
         $this->setRules();
-        $this->data = $this->validateData($message);
+        $data = $this->getData($message);
+        $this->data = $this->validateData($data);
     }
 
     public function setRules(): void
@@ -26,6 +29,15 @@ class ProductDeletedEvent extends BaseEvent
         $this->rules = [
             'sfid' => $this::SFID_VALIDATION
         ];
+    }
+
+    /**
+     * @throws ValidationException
+     */
+    public function getData(array $message): array
+    {
+        Validator::make($message, ['event'=>'required|array'])->validate();
+        return $message['event'];
     }
 
 }
